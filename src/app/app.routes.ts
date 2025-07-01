@@ -3,11 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'owners',
+        redirectTo: 'clients',
         pathMatch: 'full'
     },
     {
-        path: 'owners',
+        path: 'clients',
         loadChildren: () => import('./clients/owner.routes').then(m => m.ownerRoutes)
     }
 ];

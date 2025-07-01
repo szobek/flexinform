@@ -2,10 +2,13 @@ import { Component, signal, WritableSignal } from '@angular/core';
 import { CallService } from '../../services/call';
 import { map } from 'rxjs';
 import { Client } from '../../models/Client';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list',
-  imports: [],
+  imports: [
+    RouterModule
+  ],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })

@@ -1,0 +1,15 @@
+<h3>Cars</h3>
+<div id="cars">
+    @if(!clientCars() || clientCars().length === 0) {
+        <p>No cars registered for this client.</p>
+    } @else {
+        @for(car of clientCars(); track car.id) {
+        <div class="car">
+            <h4>{{car.type}}</h4>
+            <p>id: {{car.id}}</p>
+            <p>registered: {{car.registered | date}}</p>
+        </div>
+    }
+    }
+    
+</div>
