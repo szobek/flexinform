@@ -25,4 +25,7 @@ export class CallService {
   getCarServiceList(clientId:number, carId:number):Observable<any[]> {
     return this.http.get<any[]>(`${this._API_URL}/clients/${clientId}/cars/${carId}/services`);
   }
+  searchClient(body: any):Observable<any[]> {
+    return this.http.post<any[]>(`${this._API_URL}/clients/search`,body);
+  }
 }

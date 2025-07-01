@@ -3,11 +3,12 @@ import { CallService } from '../../services/call';
 import { map } from 'rxjs';
 import { Client } from '../../models/Client';
 import { Router, RouterModule } from '@angular/router';
+import { ClientSearch } from '../client-search/client-search';
 
 @Component({
   selector: 'app-list',
   imports: [
-    RouterModule
+    RouterModule, ClientSearch
   ],
   templateUrl: './list.html',
   styleUrl: './list.scss'

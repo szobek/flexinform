@@ -1,0 +1,19 @@
+<div>
+    <input type="text" autocomplete="off" name="name" placeholder="Client name" id="" [(ngModel)]="name">
+    <input type="text" name="card_number" autocomplete="off" placeholder="Client card number" id="" [(ngModel)]="card_number">
+    <button (click)="clickOnSearchButton()">Search</button>
+</div>
+<div id="search-result">
+@if(client) {
+    <div class="client" >
+        <h2>{{client.name}}</h2>
+        <p>Card Number: {{client.card_number}}</p>
+        <p>ID: {{client.id}}</p>
+        <p>car count: {{client.car_count}}</p>
+        <p>service count: {{client.service_count}}</p>
+    </div>
+    <button (click)="clearSearch()">Clear</button>
+} @else {
+    
+}
+</div>
