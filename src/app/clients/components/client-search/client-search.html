@@ -1,7 +1,7 @@
-<div>
-    <input type="text" autocomplete="off" name="name" placeholder="Client name" id="" [(ngModel)]="name">
-    <input type="text" name="card_number" autocomplete="off" placeholder="Client card number" id="" [(ngModel)]="card_number">
-    <button (click)="clickOnSearchButton()">Search</button>
+<div class="search-form">
+    <input type="text" autocomplete="off" class="form-control" name="name" placeholder="Client name" id="" [(ngModel)]="name">
+    <input type="text" class="form-control" name="card_number" autocomplete="off" placeholder="Client card number" id="" [(ngModel)]="card_number">
+    <button (click)="clickOnSearchButton()" class="btn btn-primary ">Search</button>
 </div>
 <div id="search-result">
 @if(client) {
