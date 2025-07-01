@@ -1,0 +1,11 @@
+
+<h1>Clients</h1>
+<div id="clients">
+    @for(client of clients(); track client.id) {
+    <div class="client">
+        <h2>{{client.name}}</h2>
+        <p>Card Number: {{client.card_number}}</p>
+        <p>ID: {{client.id}}</p>
+    </div>
+    }
+</div>
