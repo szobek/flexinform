@@ -8,12 +8,16 @@
         <thead>
             <th>service</th>
             <th>date</th>
+            <th>Log number</th>
+            <th>Document</th>
         </thead>
         <tbody>
             @for(service of serviceList();track service.id){
                 <tr>
-                    <td>{{service.event}}</td>
+                    <td>{{service.event === "regisztralt"?`Registered: ${car()?.registered}`:service.event}}</td>
                     <td>{{service.event_time | date}}</td>
+                    <td>{{service.log_number}}</td>
+                    <td>{{service.document_id}}</td>
                 </tr>
             }
         </tbody>
