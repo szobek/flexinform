@@ -1,18 +1,21 @@
 $row-hover-bg-color: #a9b9cf;
-
-#clients{
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-    .client-row{
-        color: var(--color-text);
-        padding: 10px;
-        cursor: pointer;
-        &:hover{
-            background-color: $row-hover-bg-color;
+main{
+margin: auto;
+width: 80%;
+    #clients{
+        display: flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        .client-row{
+            color: var(--color-text);
+            padding: 10px;
+            cursor: pointer;
+            &:hover{
+                background-color: $row-hover-bg-color;
+            }
         }
     }
 }
