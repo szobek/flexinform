@@ -4,16 +4,20 @@ import { map } from 'rxjs';
 import { Client } from '../../models/Client';
 import { Router, RouterModule } from '@angular/router';
 import { ClientSearch } from '../client-search/client-search';
+import { Paginator } from '../paginator/paginator';
 
 @Component({
   selector: 'app-list',
   imports: [
-    RouterModule, ClientSearch
+    RouterModule, 
+    ClientSearch,
+    Paginator
   ],
   templateUrl: './list.html',
   styleUrl: './list.scss'
 })
 export class ListComponent {
+  responseData:any=null;
   clients:WritableSignal<Client[]>=signal([]);
 constructor(
   private readonly callService: CallService,
@@ -24,6 +28,7 @@ constructor(
     .pipe(
       map((res:any)=>{
         this.clients.set(res.data as Client[]);
+        this.responseData = res;
         return res.data;
       })
     )
