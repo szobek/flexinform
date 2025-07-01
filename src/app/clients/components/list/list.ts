@@ -2,7 +2,7 @@ import { Component, signal, WritableSignal } from '@angular/core';
 import { CallService } from '../../services/call';
 import { map } from 'rxjs';
 import { Client } from '../../models/Client';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,18 +14,24 @@ import { RouterModule } from '@angular/router';
 })
 export class ListComponent {
   clients:WritableSignal<Client[]>=signal([]);
-constructor(private readonly callService: CallService) {
+constructor(
+  private readonly callService: CallService,
+  private readonly router: Router
+) {
     this.callService
     .getClients()
     .pipe(
       map((res:any)=>{
         this.clients.set(res.data as Client[]);
-        console.log('Clients:', this.clients());
-        
         return res.data;
       })
     )
     .subscribe();
+
+}
+showClientWithCars(client:Client) {
+  this.callService.client.set(client) 
+  this.router.navigate(['/clients', client.id]);
 
 }
 }

@@ -2,7 +2,7 @@
 <h1>Clients</h1>
 <div id="clients">
     @for(client of clients(); track client.id) {
-    <div class="client" [routerLink]="['/clients', client.id]">
+    <div class="client" (click)="showClientWithCars(client)">
         <h2>{{client.name}}</h2>
         <p>Card Number: {{client.card_number}}</p>
         <p>ID: {{client.id}}</p>

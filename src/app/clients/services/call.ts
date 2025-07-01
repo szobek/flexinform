@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Client } from '../models/Client';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 export class CallService {
 
   private readonly _API_URL = 'https://carservice-backend-test.flexinform.hu/api';
+  client:WritableSignal<Client|null> = signal(null);
 
   constructor(private readonly http: HttpClient) { }
 
