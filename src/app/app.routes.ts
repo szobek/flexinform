@@ -9,7 +9,7 @@ export const routes: Routes = [
     },
     {
         path: 'clients',
-        loadChildren: () => import('./clients/owner.routes').then(m => m.ownerRoutes)
+        loadChildren: () => import('./clients/client.routes').then(m => m.clientRoutes)
     },
      {
         path: '**',

@@ -2,14 +2,15 @@ import { Component, signal, WritableSignal } from '@angular/core';
 import { Car } from '../../../cars/models/Car';
 import { CallService } from '../../services/call';
 import { map } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Client } from '../../models/Client';
 
 @Component({
   selector: 'app-client-car-list',
   imports: [
-    DatePipe 
+    DatePipe,
+    RouterModule
   ],
   templateUrl: './client-car-list.html',
   styleUrl: './client-car-list.scss',
@@ -43,7 +44,6 @@ export class ClientCarList {
   }
   showServiceList(car: Car) {
     this.callService.clientCar.set(car);
-    //:id/cars/:carId/services
     const clientId = this.callService.client()?.id;
     const carId = car.id;
     if (!carId) {
@@ -54,7 +54,6 @@ export class ClientCarList {
       console.error('Client ID not found');
       return;
     }
-    // console.log('Navigating to services for car:', carId, 'of client:', clientId);
     this.router.navigate([ 'clients',clientId, 'cars', carId, 'services'], )
   }
 }
