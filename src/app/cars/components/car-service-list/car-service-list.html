@@ -1,0 +1,21 @@
+@if(!client() ) {
+  <p>No clients found.</p>
+}@else if(!car()){
+    <p>No cars found.</p>
+} @else {
+    <h3>{{client()?.name}} - {{car()?.type}}</h3>
+    <table class="table table-striped">
+        <thead>
+            <th>service</th>
+            <th>date</th>
+        </thead>
+        <tbody>
+            @for(service of serviceList();track service.id){
+                <tr>
+                    <td>{{service.event}}</td>
+                    <td>{{service.event_time | date}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

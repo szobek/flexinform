@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from '../models/Client';
+import { Car } from '../../cars/models/Car';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class CallService {
 
   private readonly _API_URL = 'https://carservice-backend-test.flexinform.hu/api';
   client:WritableSignal<Client|null> = signal(null);
+  clientCar:WritableSignal<Car|null> = signal(null);
 
   constructor(private readonly http: HttpClient) { }
 
@@ -18,5 +20,9 @@ export class CallService {
   }
   getClientCars(id: number):Observable<any[]> {
     return this.http.get<any>(`${this._API_URL}/clients/${id}/cars`);
+  }
+
+  getCarServiceList(clientId:number, carId:number):Observable<any[]> {
+    return this.http.get<any[]>(`${this._API_URL}/clients/${clientId}/cars/${carId}/services`);
   }
 }

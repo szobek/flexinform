@@ -1,7 +1,7 @@
 import { Route } from "@angular/router";
 import { ListComponent } from "./components/list/list";
-import { Client } from "./models/Client";
 import { ClientCarList } from "./components/client-car-list/client-car-list";
+import { CarServiceList } from "../cars/components/car-service-list/car-service-list";
 
 export const ownerRoutes:Route[]=[
     {
@@ -11,5 +11,9 @@ export const ownerRoutes:Route[]=[
     {
         path: ':id',
         component:ClientCarList
+    },
+    {
+        path: ':id/cars/:carId/services',
+        component:CarServiceList
     }
 ]
