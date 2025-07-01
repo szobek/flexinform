@@ -13,6 +13,9 @@
             <h4>{{car.type}}</h4>
             <p>id: {{car.id}}</p>
             <p>registered: {{car.registered | date}}</p>
+            <p>Own brand: {{car.ownbrand ? "yes":"no"}}</p>
+            <p>Accidents: {{car.accidents}}</p>
+            <p>{{car.latest_service.event}} - {{car.latest_service.event_time | date}}</p>
         </div>
     }
     }

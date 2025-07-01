@@ -3,7 +3,7 @@ import { Car } from '../../../cars/models/Car';
 import { CallService } from '../../services/call';
 import { map } from 'rxjs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, JsonPipe } from '@angular/common';
 import { Client } from '../../models/Client';
 
 @Component({
