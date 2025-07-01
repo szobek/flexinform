@@ -32,7 +32,7 @@ export class CarServiceList {
     this.car.set(car);
     const clientId = this.client()?.id;
     if (!carId || !clientId) {
-      console.error('Car ID or client id not found');
+      alert('Car ID or client id not found');
       return;
     }
     this.callService
