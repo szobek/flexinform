@@ -3,7 +3,7 @@
         <ul class="pagination flex-wrap">
             <li class="page-item"><a class="page-link"  (click)="decreaseCurrentPage()">Previous</a></li>
             @for(page of totalPages; track page) {
-                <li class="page-item"><a class="page-link" [class.active]="currentPage===page" (click)="currentPage=page">{{page}}</a></li>
+                <li class="page-item"><a class="page-link" [class.active]="currentPage===page" (click)="setPage(page)">{{page}}</a></li>
             }
             <li class="page-item"><a class="page-link"  (click)="increaseCurrentPage()">Next</a></li>
         </ul>

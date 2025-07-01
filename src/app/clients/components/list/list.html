@@ -18,5 +18,5 @@
             }
         </tbody>
     </table>
-    <app-paginator [totalPagesNum]="responseData?.last_page"/>
+    <app-paginator (callData)="getClientsFromDB($event)" [totalPagesNum]="responseData?.last_page"/>
 </div>

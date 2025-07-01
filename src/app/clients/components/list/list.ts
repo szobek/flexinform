@@ -8,36 +8,34 @@ import { Paginator } from '../paginator/paginator';
 
 @Component({
   selector: 'app-list',
-  imports: [
-    RouterModule, 
-    ClientSearch,
-    Paginator
-  ],
+  imports: [RouterModule, ClientSearch, Paginator],
   templateUrl: './list.html',
-  styleUrl: './list.scss'
+  styleUrl: './list.scss',
 })
 export class ListComponent {
-  responseData:any=null;
-  clients:WritableSignal<Client[]>=signal([]);
-constructor(
-  private readonly callService: CallService,
-  private readonly router: Router
-) {
+  responseData: any = null;
+  clients: WritableSignal<Client[]> = signal([]);
+  constructor(
+    private readonly callService: CallService,
+    private readonly router: Router
+  ) {
+    this.getClientsFromDB()
+  }
+  showClientWithCars(client: Client) {
+    this.callService.client.set(client);
+    this.router.navigate(['/clients', client.id]);
+  }
+
+  getClientsFromDB(page: number = 1) {
     this.callService
-    .getClients()
-    .pipe(
-      map((res:any)=>{
-        this.clients.set(res.data as Client[]);
-        this.responseData = res;
-        return res.data;
-      })
-    )
-    .subscribe();
-
-}
-showClientWithCars(client:Client) {
-  this.callService.client.set(client) 
-  this.router.navigate(['/clients', client.id]);
-
-}
+      .getClients(page)
+      .pipe(
+        map((res: any) => {
+          this.clients.set(res.data as Client[]);
+          this.responseData = res;
+          return res.data;
+        })
+      )
+      .subscribe();
+  }
 }
