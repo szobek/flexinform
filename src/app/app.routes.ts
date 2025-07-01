@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { NotFound } from './not-found/not-found';
 
 export const routes: Routes = [
     {
@@ -9,5 +10,10 @@ export const routes: Routes = [
     {
         path: 'clients',
         loadChildren: () => import('./clients/owner.routes').then(m => m.ownerRoutes)
-    }
+    },
+     {
+        path: '**',
+        pathMatch: 'full',
+        component:NotFound
+    },
 ];
