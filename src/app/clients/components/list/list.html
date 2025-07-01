@@ -1,11 +1,21 @@
 <app-client-search/>
 <h1>Clients</h1>
 <div id="clients">
-    @for(client of clients(); track client.id) {
-    <div class="client" (click)="showClientWithCars(client)">
-        <h2>{{client.name}}</h2>
-        <p>Card Number: {{client.card_number}}</p>
-        <p>ID: {{client.id}}</p>
-    </div>
-    }
+    
+    <table class="table table-striped">
+        <thead>
+            <th>Name</th>
+            <th>Card Number</th>
+            <th>ID</th>
+        </thead>
+        <tbody>
+            @for(client of clients(); track client.id) {
+            <tr (click)="showClientWithCars(client)" class="client-row">
+                <td>{{client.name}}</td>
+                <td>{{client.card_number}}</td>
+                <td>{{client.id}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </div>
