@@ -1,6 +1,6 @@
+import { Call } from '@angular/compiler';
 import { TestBed } from '@angular/core/testing';
 
-import { Call } from './call';
 
 describe('Call', () => {
   let service: Call;
