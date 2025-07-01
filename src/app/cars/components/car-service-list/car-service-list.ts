@@ -1,7 +1,7 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { CallService } from '../../../clients/services/call';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Service } from '../../models/Service';
 import { Client } from '../../../clients/models/Client';
 import { Car } from '../../models/Car';
@@ -9,10 +9,7 @@ import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-car-service-list',
-  imports: [
-    DatePipe, 
-    RouterModule
-  ],
+  imports: [DatePipe, RouterModule],
   templateUrl: './car-service-list.html',
   styleUrl: './car-service-list.scss',
 })
@@ -23,7 +20,8 @@ export class CarServiceList {
 
   constructor(
     private readonly callService: CallService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {}
 
   ngOnInit() {
@@ -43,6 +41,16 @@ export class CarServiceList {
         map((res: any) => {
           this.serviceList.set(res);
           return res;
+        }),
+        catchError((error: any) => {
+          if (error.status === 500) {
+            alert('Server error.');
+          }
+          if (error.status === 404) {
+            alert('No services found for this car.');
+            this.router.navigate(['/clients']);
+          }
+          return [];
         })
       )
       .subscribe();
