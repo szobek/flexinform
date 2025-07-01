@@ -1,27 +1,30 @@
-@if(!client() ) {
-  <p>No clients found.</p>
-}@else if(!car()){
-    <p>No cars found.</p>
-} @else {
-    <h3>{{client()?.name}} - {{car()?.type}}</h3>
-    <table class="table table-striped">
-        <thead>
-            <th>service</th>
-            <th>date</th>
-            <th>Log number</th>
-            <th>Document</th>
-        </thead>
-        <tbody>
-            @for(service of serviceList();track service.id){
-                <tr>
-                    <td>{{service.event === "regisztralt"?`Registered: ${car()?.registered}`:service.event}}</td>
-                    <td>{{service.event_time | date}}</td>
-                    <td>{{service.log_number}}</td>
-                    <td>{{service.document_id}}</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
-<button class="btn btn-primary m-5" routerLink="/clients">Back to clients</button>
+<main>
+    @if(!client() ) {
+        <p>No clients found.</p>
+    }@else if(!car()){
+        <p>No cars found.</p>
+    } @else {
+        <h3>{{client()?.name}} - {{car()?.type}}</h3>
+        <table class="table table-striped">
+            <thead>
+                <th>service</th>
+                <th>date</th>
+                <th>Log number</th>
+                <th>Document</th>
+            </thead>
+            <tbody>
+                @for(service of serviceList();track service.id){
+                    <tr>
+                        <td>{{service.event === "regisztralt"?`Registered: ${car()?.registered}`:service.event}}</td>
+                        <td>{{service.event_time | date}}</td>
+                        <td>{{service.log_number}}</td>
+                        <td>{{service.document_id}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    
+    <button class="btn btn-primary m-5" routerLink="/clients">Back to clients</button>
+    
+</main>
